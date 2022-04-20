@@ -3,33 +3,18 @@ using UnityEngine;
 
 public class TopDownMovementController : MonoBehaviour
 {
-    private enum ControlMode
-    {
-        /// <summary>
-        /// Up moves the character forward, left and right turn the character gradually and down moves the character backwards
-        /// </summary>
-        Tank,
-        /// <summary>
-        /// Character freely moves in the chosen direction from the perspective of the camera
-        /// </summary>
-        Direct
-    }
-
-    [SerializeField] private float m_moveSpeed = 2;
-    [SerializeField] private float m_turnSpeed = 200;
+    [SerializeField] private float m_moveSpeed = 4;
+    [SerializeField] private Animator m_animator = null;
 
     private float m_currentV = 0;
     private float m_currentH = 0;
 
     private readonly float m_interpolation = 10;
     private readonly float m_walkScale = 0.33f;
-
-    private bool m_isGrounded;
-  
+    private readonly float m_backwardsWalkScale = 0.16f;
+    private readonly float m_backwardRunScale = 0.66f;
+    
     private Plane playerMovementPlane;
-
-    private RaycastHit floorRaycastHit;
-
     private Vector3 playerToMouse;
 
     private void Awake()
@@ -39,26 +24,28 @@ public class TopDownMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        m_animator.SetBool("Grounded", true);
+
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
 
-        Transform camera = Camera.main.transform;
+        bool walk = Input.GetKey(KeyCode.LeftShift);
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (v < 0)
+        {
+            if (walk) { v *= m_backwardsWalkScale; }
+            else { v *= m_backwardRunScale; }
+        }
+        else if (walk)
         {
             v *= m_walkScale;
-            h *= m_walkScale;
         }
 
         m_currentV = Mathf.Lerp(m_currentV, v, Time.deltaTime * m_interpolation);
         m_currentH = Mathf.Lerp(m_currentH, h, Time.deltaTime * m_interpolation);
 
-        Vector3 direction = camera.forward * m_currentV + camera.right * m_currentH;
+        transform.position += transform.forward * m_currentV * m_moveSpeed * Time.deltaTime;
 
-        float directionLength = direction.magnitude;
-        direction.y = 0;
-        direction = direction.normalized * directionLength;
-        
         Vector3 cursorScreenPosition = Input.mousePosition;
 
         Vector3 cursorWorldPosition = ScreenPointToWorldPointOnPlane(cursorScreenPosition, playerMovementPlane, Camera.main);
@@ -71,11 +58,8 @@ public class TopDownMovementController : MonoBehaviour
 
         transform.rotation = Quaternion.LookRotation(playerToMouse);
 
-        if (direction != Vector3.zero)
-        {
+        m_animator.SetFloat("MoveSpeed", m_currentV);
 
-            transform.position += direction * m_moveSpeed * Time.deltaTime;
-        }
     }
 
     Vector3 PlaneRayIntersection(Plane plane, Ray ray)
@@ -89,5 +73,12 @@ public class TopDownMovementController : MonoBehaviour
     {
         Ray ray = camera.ScreenPointToRay(screenPoint);
         return PlaneRayIntersection(plane, ray);
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag.Equals("Chest"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
