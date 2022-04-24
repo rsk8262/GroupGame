@@ -25,7 +25,7 @@ public class PlayerManager : MonoBehaviour
         healthBar.SetHealth(health);
         if (health <= 0)
         {
-            //Handle End Game status
+            GameManager.GM.gameState = GameState.LostLevel;
         }
     }
 }

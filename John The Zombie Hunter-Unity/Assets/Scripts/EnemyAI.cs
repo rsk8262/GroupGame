@@ -37,6 +37,9 @@ public class EnemyAI: MonoBehaviour
     {
         if (npcHP == 0) return;
 
+        if (Random.value < .03 && Vector3.Distance(playerTransform.position, transform.root.position) < 5)
+            GetComponent<EnemyAI_SoundController>().ApplySearchSound();
+
         m_animator.SetBool("Attack", false);
 
         agent.destination = playerTransform.position;
@@ -52,6 +55,7 @@ public class EnemyAI: MonoBehaviour
     void EndAttack()
     {
         playerTransform.gameObject.GetComponent<PlayerManager>().ApplyDamage(npcDamage);
+        GetComponent<EnemyAI_SoundController>().ApplyAttackSound();
     }
 
     public void ApplyDamage(int points)
@@ -68,6 +72,7 @@ public class EnemyAI: MonoBehaviour
             Destroy(transform.root.gameObject, destoryEnemyAfter);
             transform.root.gameObject.GetComponent<CapsuleCollider>().enabled = false;
             GameManager.GM.UpdateScore(1);
+            GetComponent<EnemyAI_SoundController>().ApplyDamageSound();
         }
     }
     private void OnDestroy()
