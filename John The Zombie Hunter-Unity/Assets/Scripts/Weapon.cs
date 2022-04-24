@@ -20,11 +20,20 @@ public class Weapon : MonoBehaviour
 
     public AnimationClip weaponAnimationClip;
     private float LastShootTime;
+    AudioSource shootingSource;
+    
+    private void Awake()
+    {
+        TryGetComponent(out shootingSource);
+    }
 
     public void Shoot()
     {
         if (LastShootTime + ShootDelay < Time.time)
         {
+            if (shootingSource)
+                shootingSource.Play();
+
             ShootingSystem.Play();
             Vector3 direction = fireTransform.forward * 100f;
 
