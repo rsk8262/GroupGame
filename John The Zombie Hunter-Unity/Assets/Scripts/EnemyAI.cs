@@ -67,6 +67,7 @@ public class EnemyAI: MonoBehaviour
             npcHP = 0;
             Destroy(transform.root.gameObject, destoryEnemyAfter);
             transform.root.gameObject.GetComponent<CapsuleCollider>().enabled = false;
+            GameManager.GM.UpdateScore(1);
         }
     }
     private void OnDestroy()
