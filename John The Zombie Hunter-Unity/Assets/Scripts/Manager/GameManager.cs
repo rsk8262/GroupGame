@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
     public int totalObjectives;
     public int objectivesCaptured;
 
+    public Texture2D crosshair;
 
     /*** MEHTODS ***/
 
@@ -138,7 +139,6 @@ public class GameManager : MonoBehaviour
     {
         //if we run play the game from the level instead of start scene
         if (currentSceneName != startScene) { SetDefaultGameStats(); }
-
     }//end Start()
 
     // Update is called once per frame
@@ -198,6 +198,7 @@ public class GameManager : MonoBehaviour
     //LOAD THE GAME FOR THE FIRST TIME OR RESTART
     public void StartGame()
     {
+        Cursor.SetCursor(crosshair, Vector2.zero, CursorMode.ForceSoftware);
         SetGameState(GameState.Playing);
         //get first game level
         gameLevelsCount = 1; //set the count for the game levels
@@ -252,6 +253,8 @@ public class GameManager : MonoBehaviour
     //GO TO THE GAME OVER SCENE
     public void GameOver()
     {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
+
         SetGameState(GameState.GameOver);//set the game state to Game Over
 
         SceneManager.LoadScene(gameOverScene); //load the game over scene
