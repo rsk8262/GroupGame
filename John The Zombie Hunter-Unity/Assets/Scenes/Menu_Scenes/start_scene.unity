@@ -768,6 +768,7 @@ MonoBehaviour:
   playerWon: 0
   totalObjectives: 0
   objectivesCaptured: 0
+  crosshair: {fileID: 2800000, guid: aaf9082de97fc454d982a7f81acae66c, type: 3}
 --- !u!4 &1016615700
 Transform:
   m_ObjectHideFlags: 0
