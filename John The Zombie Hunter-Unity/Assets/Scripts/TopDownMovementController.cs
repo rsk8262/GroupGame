@@ -9,11 +9,8 @@ public class TopDownMovementController : MonoBehaviour
     private float m_currentV = 0;
     private float m_currentH = 0;
 
-    private readonly float m_interpolation = 10;
-    private readonly float m_walkScale = 0.33f;
-    private readonly float m_backwardsWalkScale = 0.16f;
-    private readonly float m_backwardRunScale = 0.66f;
-    
+    private readonly float m_interpolation = 5;
+
     private Plane playerMovementPlane;
     private Vector3 playerToMouse;
 
@@ -24,27 +21,14 @@ public class TopDownMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_animator.SetBool("Grounded", true);
-
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
-
-        bool walk = Input.GetKey(KeyCode.LeftShift);
-
-        if (v < 0)
-        {
-            if (walk) { v *= m_backwardsWalkScale; }
-            else { v *= m_backwardRunScale; }
-        }
-        else if (walk)
-        {
-            v *= m_walkScale;
-        }
-
+        
         m_currentV = Mathf.Lerp(m_currentV, v, Time.deltaTime * m_interpolation);
         m_currentH = Mathf.Lerp(m_currentH, h, Time.deltaTime * m_interpolation);
 
         transform.position += transform.forward * m_currentV * m_moveSpeed * Time.deltaTime;
+        transform.position += transform.right * m_currentH * m_moveSpeed * Time.deltaTime * .75f;
 
         Vector3 cursorScreenPosition = Input.mousePosition;
 
@@ -57,9 +41,8 @@ public class TopDownMovementController : MonoBehaviour
         playerToMouse.Normalize();
 
         transform.rotation = Quaternion.LookRotation(playerToMouse);
-
-        m_animator.SetFloat("MoveSpeed", m_currentV);
-
+        m_animator.SetFloat("InputX", m_currentH);
+        m_animator.SetFloat("InputY", m_currentV);
     }
 
     Vector3 PlaneRayIntersection(Plane plane, Ray ray)

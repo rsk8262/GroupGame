@@ -16,8 +16,6 @@ public class MazeSpawner : MonoBehaviour {
 
 	public NavMeshSurface surface;
 	public MazeGenerationAlgorithm Algorithm = MazeGenerationAlgorithm.PureRecursive;
-	public bool FullRandom = false;
-	public int RandomSeed = 12345;
 	public GameObject Floor = null;
 	public GameObject Wall = null;
 	public GameObject Pillar = null;
@@ -30,9 +28,6 @@ public class MazeSpawner : MonoBehaviour {
 	private BasicMazeGenerator mMazeGenerator = null;
 
 	void Start () {
-		if (!FullRandom) {
-			Random.seed = RandomSeed;
-		}
 		switch (Algorithm) {
 		case MazeGenerationAlgorithm.PureRecursive:
 			mMazeGenerator = new RecursiveMazeGenerator (Rows, Columns);
@@ -76,7 +71,7 @@ public class MazeSpawner : MonoBehaviour {
 					tmp.transform.parent = transform;
 				}
 				if(cell.IsGoal && GoalPrefab != null){
-					tmp = Instantiate(GoalPrefab,new Vector3(x,1,z), Quaternion.Euler(0,0,0)) as GameObject;
+					tmp = Instantiate(GoalPrefab, new Vector3(x,1,z), Quaternion.Euler(0,0,0));
 					tmp.transform.parent = transform;
 				}
 			}

@@ -7,15 +7,16 @@ public class EnemyAI: MonoBehaviour
 {
     public float attackDistance = 2f;
     public float movementSpeed = .01f;
-    public float npcHP = 100;
-    public float npcDamage = 5;
+    public int npcHP = 100;
+    public int npcDamage = 5;
     public float destoryEnemyAfter = 10;
     [HideInInspector]
     public Transform playerTransform;
     [SerializeField] private Animator m_animator = null;
 
     private NavMeshAgent agent;
- 
+    public EnemySpawner spawner;
+    public HealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -42,25 +43,34 @@ public class EnemyAI: MonoBehaviour
         Vector3 relativePos = agent.steeringTarget - transform.position;
         transform.rotation = Quaternion.LookRotation(relativePos);
 
-        if (agent.remainingDistance > attackDistance)
+        if (Vector3.Distance(playerTransform.position, transform.root.position) > attackDistance)
             m_animator.SetFloat("MoveSpeed", movementSpeed * 1.5f);
         else
-        {
             m_animator.SetBool("Attack", true);
-            playerTransform.gameObject.GetComponent<PlayerManager>().ApplyDamage(npcDamage);
-        }
     }
 
-    public void ApplyDamage(float points)
+    void EndAttack()
+    {
+        playerTransform.gameObject.GetComponent<PlayerManager>().ApplyDamage(npcDamage);
+    }
+
+    public void ApplyDamage(int points)
     {
         npcHP -= points;
+        healthBar.SetHealth(npcHP);
 
         if (npcHP <= 0)
         {
+            healthBar.Disable();
             m_animator.SetBool("Dead", true);
             agent.isStopped = true;
             npcHP = 0;
             Destroy(transform.root.gameObject, destoryEnemyAfter);
+            transform.root.gameObject.GetComponent<CapsuleCollider>().enabled = false;
         }
+    }
+    private void OnDestroy()
+    {
+        spawner.UpdateCounter();
     }
 }

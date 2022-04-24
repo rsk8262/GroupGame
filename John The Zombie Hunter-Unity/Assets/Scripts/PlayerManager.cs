@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public float health = 100f;
+    public int health = 100;
+    public HealthBarPlayer healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +19,13 @@ public class PlayerManager : MonoBehaviour
         
     }
 
-    public void ApplyDamage(float points)
+    public void ApplyDamage(int points)
     {
         health -= points;
-
+        healthBar.SetHealth(health);
         if (health <= 0)
         {
-            
+            //Handle End Game status
         }
     }
 }
