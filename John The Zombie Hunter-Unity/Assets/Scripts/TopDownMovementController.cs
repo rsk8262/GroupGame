@@ -61,6 +61,10 @@ public class TopDownMovementController : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Chest"))
         {
+            GameManager.GM.ObjectiveCaptured();
+            if (GameManager.GM.totalObjectives - GameManager.GM.objectivesCaptured == 0)
+                GameManager.GM.gameState = GameState.BeatLevel;
+
             Destroy(other.gameObject);
         }
     }

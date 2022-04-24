@@ -10,6 +10,8 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private ParticleSystem ImpactParticleSystem;
     [SerializeField]
+    private ParticleSystem BloodImpactParticleSystem;
+    [SerializeField]
     private TrailRenderer BulletTrail;
     [SerializeField]
     private float ShootDelay = 0.5f;
@@ -48,12 +50,16 @@ public class Weapon : MonoBehaviour
 
             yield return null;
         }
-        EnemyAI enemy = Hit.transform.gameObject.GetComponent<EnemyAI>();
-        if (enemy)
-            enemy.ApplyDamage(damage_per_hit);
 
         Trail.transform.position = Hit.point;
-        Instantiate(ImpactParticleSystem, Hit.point, Quaternion.LookRotation(Hit.normal));
+        EnemyAI enemy = Hit.transform.gameObject.GetComponent<EnemyAI>();
+        if (enemy)
+        {
+            enemy.ApplyDamage(damage_per_hit);
+            Instantiate(BloodImpactParticleSystem, Hit.point, Quaternion.LookRotation(Hit.normal));
+        }
+        else
+            Instantiate(ImpactParticleSystem, Hit.point, Quaternion.LookRotation(Hit.normal));
 
         Destroy(Trail.gameObject, Trail.time);
     }

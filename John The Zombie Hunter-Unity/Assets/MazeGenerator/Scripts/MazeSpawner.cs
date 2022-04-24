@@ -86,6 +86,7 @@ public class MazeSpawner : MonoBehaviour {
 				}
 			}
 		}
+		GameManager.GM.SetTotalObjectives(GameObject.FindGameObjectsWithTag("Chest").Length);
 		surface.BuildNavMesh();
 	}
 }
