@@ -15,16 +15,21 @@ public class ActiveWeapon : MonoBehaviour
     public GameObject player;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
         animatorOverride = animator.runtimeAnimatorController as AnimatorOverrideController;
     }
-
+     
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (!currentWeapon)
+        if (currentWeapon)
+        {
+            handIK.weight = 1f;
+            animator.SetLayerWeight(1, 1);
+        }
+        else
         {
             handIK.weight = 0f;
             animator.SetLayerWeight(1, 0);
@@ -40,8 +45,6 @@ public class ActiveWeapon : MonoBehaviour
             Destroy(currentWeapon.gameObject);
         
         currentWeapon = Instantiate(newWeapon, weaponParent);
-        handIK.weight = 1.0f;
-        animator.SetLayerWeight(1, 1);
         Invoke(nameof(SetOverrideAnim), .001f);
     }
 
