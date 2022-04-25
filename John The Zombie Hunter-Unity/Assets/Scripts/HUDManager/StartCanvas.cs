@@ -8,10 +8,7 @@
  * Description: Updates start canvas referecing game manager
 ****/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; //libraries for UI components
 
 public class StartCanvas : MonoBehaviour
 {
@@ -26,7 +23,7 @@ public class StartCanvas : MonoBehaviour
 
     public void GameStart()
     {
-         gm.StartGame(); //refenece the StartGame method on the game manager
+        gm.StartGame(); //refenece the StartGame method on the game manager
     }
 
     public void GameExit()

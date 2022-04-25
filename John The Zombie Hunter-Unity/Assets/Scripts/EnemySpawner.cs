@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,21 +14,21 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         if (counter != 0) return;
-        
+
         List<GameObject> floorsAtDistance = GameObject.FindGameObjectsWithTag("Floor")
             .Where(x => Vector3.Distance(player.position, x.transform.position) >= min_distance_to_player)
             .OrderBy(x => Random.value).ToList();
-  
+
         int remaining_zombies = zombies_per_wave;
 
-        foreach(GameObject floor in floorsAtDistance)
+        foreach (GameObject floor in floorsAtDistance)
         {
             if (remaining_zombies == 0) return;
 

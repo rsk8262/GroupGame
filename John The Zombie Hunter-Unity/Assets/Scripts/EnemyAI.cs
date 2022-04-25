@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 
-public class EnemyAI: MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     public float attackDistance = 2f;
     public float movementSpeed = .01f;

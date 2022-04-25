@@ -9,9 +9,6 @@
 ****/
 
 /** Import Libraries **/
-using System; //C# library for system properties
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement; //libraries for accessing scenes
 

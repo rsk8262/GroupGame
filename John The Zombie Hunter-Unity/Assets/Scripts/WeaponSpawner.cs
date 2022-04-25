@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WeaponSpawner : MonoBehaviour
@@ -42,7 +41,7 @@ public class WeaponSpawner : MonoBehaviour
             counter++;
             GameObject weapon_holder = Instantiate(spherePrefab, new Vector3(floor.transform.position.x, 1f, floor.transform.position.z), Quaternion.identity);
             weapon_holder.GetComponent<WeaponPickup>().weaponPrefab = weaponsPrefabs[Random.Range(0, weaponsPrefabs.Length)];
-        
+
             remaining_weapons -= 1;
         }
     }

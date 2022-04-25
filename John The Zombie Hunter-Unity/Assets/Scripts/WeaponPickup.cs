@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour
@@ -16,7 +14,7 @@ public class WeaponPickup : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         ActiveWeapon activeWeapon = other.gameObject.GetComponent<ActiveWeapon>();
-        if(activeWeapon)
+        if (activeWeapon)
         {
             activeWeapon.Equip(weaponPrefab);
             Destroy(gameObject);

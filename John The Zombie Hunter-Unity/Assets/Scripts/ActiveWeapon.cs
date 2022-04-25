@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 //using UnityEditor.Animations;
 
@@ -20,7 +18,7 @@ public class ActiveWeapon : MonoBehaviour
         animator = GetComponent<Animator>();
         animatorOverride = animator.runtimeAnimatorController as AnimatorOverrideController;
     }
-     
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -41,9 +39,9 @@ public class ActiveWeapon : MonoBehaviour
 
     public void Equip(Weapon newWeapon)
     {
-        if(currentWeapon)
+        if (currentWeapon)
             Destroy(currentWeapon.gameObject);
-        
+
         currentWeapon = Instantiate(newWeapon, weaponParent);
         Invoke(nameof(SetOverrideAnim), .001f);
     }

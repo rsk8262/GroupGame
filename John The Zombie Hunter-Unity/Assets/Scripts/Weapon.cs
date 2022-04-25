@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 public class Weapon : MonoBehaviour
 {
@@ -21,7 +20,7 @@ public class Weapon : MonoBehaviour
     public AnimationClip weaponAnimationClip;
     private float LastShootTime;
     AudioSource shootingSource;
-    
+
     private void Awake()
     {
         TryGetComponent(out shootingSource);

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MazeSpawner">
+    <Position X="23.5" Y="1.25" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="MazeSpawner.MazeGenerationAlgorithm" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\MazeGenerator\Scripts\MazeSpawner.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACAAAEgAAAQAAAAAASAAAAQEAAAAAAwAAEQ=</HashCode>
+      <FileName>Assets\MazeGenerator\Scripts\MazeSpawner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ActiveWeapon">
+    <Position X="21.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BACAAAAEAgAAAIAAAAAAAACAIAAAAAAhEAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\ActiveWeapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyAI">
+    <Position X="28" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBARBQAAAiAAAQAAAAAAAAAAAEAAAAAIAAAQAACQCAA=</HashCode>
+      <FileName>Assets\Scripts\EnemyAI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyAI_SoundController">
+    <Position X="26.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAIAAAAAAAAACAQAAAAAAAAAAAAAACAEAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EnemyAI_SoundController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemySpawner">
+    <Position X="25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAADAAAAAAAAAAAAAAACAEAAEBIAABAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EnemySpawner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthBar">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAABAAgAoAAAAA=</HashCode>
+      <FileName>Assets\Scripts\HealthBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthBarPlayer">
+    <Position X="15.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACCAAAAAAAAAAAAAAAAAACAAAAAAAAoAAAAA=</HashCode>
+      <FileName>Assets\Scripts\HealthBarPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EndCanvas">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACACACAECAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\HUDManager\EndCanvas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuHandler" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAQACAAAEAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\HUDManager\MenuHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StartCanvas">
+    <Position X="17.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACACACAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\HUDManager\StartCanvas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAjQwEEGEEHEwAgQQoAACsIQogALAKAAAgAAIkCEQ=</HashCode>
+      <FileName>Assets\Scripts\Manager\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerManager">
+    <Position X="21.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAEAAAAAAAAAAAAAQAAg=</HashCode>
+      <FileName>Assets\Scripts\PlayerManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Spinner">
+    <Position X="15.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Spinner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TopDownMovementController">
+    <Position X="19.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAQAEAgAAAAAAAFAAAAAAAAAAAAAAQQAAgABCAEA=</HashCode>
+      <FileName>Assets\Scripts\TopDownMovementController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Weapon">
+    <Position X="18.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAEgBAAAAAABAAAAAABIAAoAAAAAIAAAAAAAQAAAkA=</HashCode>
+      <FileName>Assets\Scripts\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeaponPickup">
+    <Position X="13.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACABAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\WeaponPickup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeaponSpawner">
+    <Position X="14" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAQACACAQAAAAAAAgAAAAEAAACAEBAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\WeaponSpawner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="GameState">
+    <Position X="16" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgABAAAAAAEAAAAAABAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
